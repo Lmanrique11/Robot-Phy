@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Interactive Plot Analysis — Educational Front Page</title>
+  <title>Robot Physicist</title>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 
@@ -12,19 +12,19 @@
 </head>
 <body>
   <header>
-    <div class="logo">IA</div>
+    <div class="logo"><img style=" height:48px;" src="images/cern.png" alt=""></div>
     <div>
-      <h1>Interactive Plot Analysis</h1>
-      <p class="lead">Learn to explore data visually — change plots, inspect stats, and export results.</p>
+      <h1>Robot Physicist</h1>
+      <p class="lead">Explora los datos capturados en el proyecto Atlas!</p>
     </div>
   </header>
 
   <main class="container">
     <!-- Controls -->
     <aside class="card controls">
-      <h3>Data & Plot Controls</h3>
+      <h3>Selección de datos y controles</h3>
 
-      <label for="dataset">Dataset</label>
+      <label for="dataset">Datos</label>
       <select id="dataset">
         <option value="sine">Sine wave (clean)</option>
         <option value="sine-noisy">Sine wave (noisy)</option>
@@ -33,39 +33,44 @@
         <option value="hist">Distribution (histogram)</option>
       </select>
 
-      <label for="plottype">Plot type</label>
+      <!--<label for="plottype">Plot type</label>
       <select id="plottype">
         <option value="scatter">Scatter / Line</option>
         <option value="line">Line</option>
         <option value="bar">Bar</option>
         <option value="histogram">Histogram</option>
-      </select>
+      </select>-->
 
-      <label for="points">Number of points: <span id="npoints-label">200</span></label>
-      <input id="npoints" type="range" min="50" max="2000" value="200">
+      <label for="points">Corte: <span id="npoints-label">200</span></label>
+      <input id="selectorCorte" type="range" min="50" max="2000" value="200">
 
-      <label for="smoothing">Smoothing (moving avg window)</label>
-      <input id="smoothing" type="range" min="0" max="51" step="1" value="1">
+      <!-- <label for="smoothing">Smoothing (moving avg window)</label>
+      <input id="smoothing" type="range" min="0" max="51" step="1" value="1"> -->
 
-      <label><input id="trend" type="checkbox"> Show linear trend</label>
+      <!-- <label><input id="trend" type="checkbox"> Show linear trend</label> -->
 
-      <label for="export">Export</label>
-      <button id="exportBtn">Save PNG</button>
+      <label for="export">Exportar</label>
+      <button id="exportBtn">Guardar PNG</button>
 
       <div class="footer">Tip: change dataset and smoothing to see how trends and distribution change. Use the analysis panel to read mean/median/std.</div>
     </aside>
 
     <!-- Plot -->
+     
     <section class="card plot-card">
-      <div id="plot"></div>
-      <div style="display:flex;gap:12px;margin-top:12px;align-items:center">
-        <div class="muted">Hover a point to inspect values. Use the toolbar to zoom / pan / box-select.</div>
+      <!-- <div id="plot"></div> -->
+      <div class="flexCentered" id="changingImage">
+        <img id="laImagen" style="width: 100%;" src="images/photo_4933878088723008278_x.jpg" alt="">
       </div>
+      <!--<div style="display:flex;gap:12px;margin-top:12px;align-items:center">
+        <div class="muted">Hover a point to inspect values. Use the toolbar to zoom / pan / box-select.</div>
+      </div>-->
     </section>
 
+    
     <!-- Analysis -->
     <aside class="card analysis">
-      <h3>Quick Analysis</h3>
+      <h3>Métricas descriptivas</h3>
       <div class="stat"><div class="label">Points</div><div id="stat-n">—</div></div>
       <div class="stat"><div class="label">Mean</div><div id="stat-mean">—</div></div>
       <div class="stat"><div class="label">Median</div><div id="stat-median">—</div></div>
@@ -73,7 +78,7 @@
       <div class="stat"><div class="label">Min</div><div id="stat-min">—</div></div>
       <div class="stat"><div class="label">Max</div><div id="stat-max">—</div></div>
 
-      <h3 style="margin-top:14px">Notes</h3>
+      <h3 style="margin-top:14px">Análisis</h3>
       <p class="muted">This page is an educational playground. The smoothing is a simple moving average; trendline is fitted by least-squares. Histogram uses automatic bins but you can change the dataset to "Distribution" for a focused view.</p>
     </aside>
   </main>

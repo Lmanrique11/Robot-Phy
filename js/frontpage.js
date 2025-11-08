@@ -46,6 +46,8 @@ const statStd = document.getElementById('stat-std');
 const statMin = document.getElementById('stat-min');
 const statMax = document.getElementById('stat-max');
 
+
+
 function updateStats(y){ statN.textContent = y.length; statMean.textContent = mean(y).toFixed(3); statMedian.textContent = median(y).toFixed(3); statStd.textContent = std(y).toFixed(3); statMin.textContent = min(y).toFixed(3); statMax.textContent = max(y).toFixed(3) }
 
 function fitLinear(x,y){ // simple least squares
@@ -96,19 +98,83 @@ function draw(){
 }
 
 // initial draw
-draw();
+//draw();
 
 // wire events
-[datasetEl, plotTypeEl, npointsEl, smoothingEl, trendEl].forEach(el=> el.addEventListener('input', draw));
+//[datasetEl, plotTypeEl, npointsEl, smoothingEl, trendEl].forEach(el=> el.addEventListener('input', draw));
 
+/*
 exportBtn.addEventListener('click', ()=>{
     Plotly.toImage(plotDiv, {format:'png', height:600, width:900}).then(url=>{
     const a=document.createElement('a'); a.href=url; a.download='plot.png'; document.body.appendChild(a); a.click(); a.remove();
     })
 })
+    */
 
 // improve UX: when dataset is histogram force histogram plot type
 datasetEl.addEventListener('change', ()=>{
     if(datasetEl.value==='hist') plotTypeEl.value='histogram';
     draw();
 })
+
+
+//--------------------------------------------
+
+
+const laImagen = document.getElementById("laImagen");
+const selectorCorte = document.getElementById("selectorCorte");
+
+
+selectorCorte.value = 0;
+selectorCorte.step = 10;
+selectorCorte.min = 30;
+selectorCorte.max = 80;
+
+let imagenActual = "photo_4933878088723008278_x.jpg";
+
+npointsLabel.innerHTML = selectorCorte.value;
+
+selectorCorte.addEventListener("change",()=>{
+    
+    npointsLabel.innerHTML = selectorCorte.value;  
+
+    // Cambiar imagen
+    // Cambiar métricas
+    // Disparar gemini y escribir su respuesta 
+
+});
+
+
+exportBtn.addEventListener('click', ()=>{
+    const a=document.createElement('a'); 
+    a.href="images/"+ imagenActual; 
+    a.download= imagenActual ; 
+    document.body.appendChild(a); 
+    a.click(); 
+    a.remove();
+})
+
+
+let mensaje = 'Saca algún insight de esto (limítate a 50 palabras): "Mean: 18.45, std Dev: 2, median:16, min:4, max:28"';
+
+function getGeminiResponse(mensaje){
+
+    let respuesta = {};
+    const API_KEY = "AIzaSyC1K_u3dxfSmhDBIGKv6MxxGYWhL9ZlzEI";
+
+    fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json", "x-goog-api-key": API_KEY },
+  body: JSON.stringify({
+    contents: [{ parts: [{ text: mensaje }] }]
+  })
+}).then(res => res.json()).then(res => respuesta = res);
+
+return respuesta;
+
+}
+
+//let textoRespuesta = respuesta['candidates'][0]['content']['parts'][0]['text'];
+
+
+//setInterval(()=>{  console.log(respuesta['candidates'][0]['content']['parts'][0]['text']);  },5000);
