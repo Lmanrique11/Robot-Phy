@@ -11,7 +11,7 @@ jobs:
     # 🚨 CORRECCIÓN CLAVE: Usar el contenedor Docker de ATLAS 
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/atlas-outreach-data-tools/notebooks-collection-opendata:latest
+      image: ghcr.io/atlas-outreach-data-tools/notebooks-collection-opendata:2023
 
     steps:
     
