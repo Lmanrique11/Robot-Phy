@@ -1,1 +1,83 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Interactive Plot Analysis — Educational Front Page</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+  <link rel="stylesheet" href="css/frontpage.css">
+</head>
+<body>
+  <header>
+    <div class="logo">IA</div>
+    <div>
+      <h1>Interactive Plot Analysis</h1>
+      <p class="lead">Learn to explore data visually — change plots, inspect stats, and export results.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Controls -->
+    <aside class="card controls">
+      <h3>Data & Plot Controls</h3>
+
+      <label for="dataset">Dataset</label>
+      <select id="dataset">
+        <option value="sine">Sine wave (clean)</option>
+        <option value="sine-noisy">Sine wave (noisy)</option>
+        <option value="scatter">Random scatter</option>
+        <option value="linear">Linear with noise</option>
+        <option value="hist">Distribution (histogram)</option>
+      </select>
+
+      <label for="plottype">Plot type</label>
+      <select id="plottype">
+        <option value="scatter">Scatter / Line</option>
+        <option value="line">Line</option>
+        <option value="bar">Bar</option>
+        <option value="histogram">Histogram</option>
+      </select>
+
+      <label for="points">Number of points: <span id="npoints-label">200</span></label>
+      <input id="npoints" type="range" min="50" max="2000" value="200">
+
+      <label for="smoothing">Smoothing (moving avg window)</label>
+      <input id="smoothing" type="range" min="0" max="51" step="1" value="1">
+
+      <label><input id="trend" type="checkbox"> Show linear trend</label>
+
+      <label for="export">Export</label>
+      <button id="exportBtn">Save PNG</button>
+
+      <div class="footer">Tip: change dataset and smoothing to see how trends and distribution change. Use the analysis panel to read mean/median/std.</div>
+    </aside>
+
+    <!-- Plot -->
+    <section class="card plot-card">
+      <div id="plot"></div>
+      <div style="display:flex;gap:12px;margin-top:12px;align-items:center">
+        <div class="muted">Hover a point to inspect values. Use the toolbar to zoom / pan / box-select.</div>
+      </div>
+    </section>
+
+    <!-- Analysis -->
+    <aside class="card analysis">
+      <h3>Quick Analysis</h3>
+      <div class="stat"><div class="label">Points</div><div id="stat-n">—</div></div>
+      <div class="stat"><div class="label">Mean</div><div id="stat-mean">—</div></div>
+      <div class="stat"><div class="label">Median</div><div id="stat-median">—</div></div>
+      <div class="stat"><div class="label">Std. Dev.</div><div id="stat-std">—</div></div>
+      <div class="stat"><div class="label">Min</div><div id="stat-min">—</div></div>
+      <div class="stat"><div class="label">Max</div><div id="stat-max">—</div></div>
+
+      <h3 style="margin-top:14px">Notes</h3>
+      <p class="muted">This page is an educational playground. The smoothing is a simple moving average; trendline is fitted by least-squares. Histogram uses automatic bins but you can change the dataset to "Distribution" for a focused view.</p>
+    </aside>
+  </main>
+
+  <script src="js/frontpage.js"></script>
+</body>
+</html>
