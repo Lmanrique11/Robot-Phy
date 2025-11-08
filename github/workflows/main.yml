@@ -1,1 +1,34 @@
+name: "El Físico Remoto - Autopilot"
 
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run_physics_analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+    
+    - name: Checkout del Repositorio
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: 🐍 Configurar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Instalar Dependencias
+      run: pip install -r requirements.txt
+      
+    - name: Ejecutar el Análisis de Física
+      run: python scripts/analysis.py
+
+    - name: Subir Gráficos y Resultados al Repositorio
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "🤖 [Autopilot] Actualización automática de resultados (Gráficos)"
+        files: results/*.png results/*.json
