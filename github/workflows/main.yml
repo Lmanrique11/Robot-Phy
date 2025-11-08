@@ -24,7 +24,7 @@ jobs:
         
     - name: 🧪 Ejecutar el Análisis de Física
       # Asegúrate de que la ruta a tu script sea correcta (ej. scripts/analysis.py)
-      run: python scripts/analysis.py 
+      run: python Scripts/analysis.py 
 
     - name: ⬆️ Subir Resultados Consolidados al Repositorio
       uses: stefanzweifel/git-auto-commit-action@v5
