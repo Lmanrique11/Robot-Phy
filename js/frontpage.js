@@ -160,7 +160,7 @@ let mensaje = 'Saca algún insight de esto (limítate a 50 palabras): "Mean: 18.
 function getGeminiResponse(mensaje){
 
     let respuesta = {};
-    const API_KEY = "AIzaSyC1K_u3dxfSmhDBIGKv6MxxGYWhL9ZlzEI";
+    const API_KEY = "";
 
     fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`, {
   method: "POST",
