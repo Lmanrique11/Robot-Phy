@@ -1,34 +1,33 @@
-name: "El Físico Remoto - Autopilot"
+name: "⚛️ Físico Remoto: Explorador de Parámetros (Docker)" # Nombre corregido para claridad
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch: # Agregado para poder ejecutarlo manualmente
 
 jobs:
   run_physics_analysis:
+    # 🚨 CORRECCIÓN CLAVE: Usar el contenedor Docker de ATLAS 
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/atlas-outreach-data-tools/notebooks-collection-opendata:latest
 
     steps:
     
-    - name: Checkout del Repositorio
+    - name: ⬇️ Checkout del Repositorio
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         
-    - name: Configurar Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
+    # ❌ Eliminados los pasos de Configurar Python e Instalar Dependencias
+        
+    - name: 🧪 Ejecutar el Análisis de Física
+      # Asegúrate de que la ruta a tu script sea correcta (ej. scripts/analysis.py)
+      run: python scripts/analysis.py 
 
-    - name: Instalar Dependencias
-      run: pip install -r requirements.txt
-      
-    - name: Ejecutar el Análisis de Física
-      run: python Scripts/analysis.py
-
-    - name: Subir Gráficos y Resultados al Repositorio
+    - name: ⬆️ Subir Resultados Consolidados al Repositorio
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
-        commit_message: "🤖 [Autopilot] Actualización automática de resultados (Gráficos)"
+        commit_message: "🤖 [Autopilot] Actualización automática de análisis parametrizado"
         files: results/summary_analysis.json
