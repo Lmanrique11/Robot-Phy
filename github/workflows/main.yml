@@ -25,10 +25,10 @@ jobs:
       run: pip install -r requirements.txt
       
     - name: Ejecutar el Análisis de Física
-      run: python scripts/analysis.py
+      run: python Scripts/analysis.py
 
     - name: Subir Gráficos y Resultados al Repositorio
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: "🤖 [Autopilot] Actualización automática de resultados (Gráficos)"
-        files: results/*.png results/*.json
+        files: Results/*.png results/*.json
