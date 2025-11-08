@@ -1,18 +1,16 @@
 {
-    "ANÁLISIS": {
-        "PARTÍCULA_OBJETIVO": "Boson_Z_MuMu",
-        "FUENTE_DATOS": "mc_361106_Zee",
-        "AÑO_DATOS": 2017
+    "analysis_name": "Explorador de Parámetros Higgs (H -> gamma gamma)",
+    "description": "Configuración central para definir el rango de momento transverso (p_T) del fotón a explorar.",
+    "analysis_parameters": {
+        "pt_min": 25000,
+        "pt_max": 100000,
+        "pt_step": 1500, 
+        "runs_per_execution": null 
     },
-    "CORTES_FÍSICOS": {
-        "PT_MÍNIMO_MUON": 27.0,
-        "ETA_MÁXIMO_MUON": 2.5
+    "units": {
+        "pt_min": "MeV",
+        "pt_max": "MeV",
+        "pt_step": "MeV"
     },
-    "HISTOGRAMA": {
-        "MASA_INVARIANTE_MIN": 60.0,
-        "MASA_INVARIANTE_MAX": 120.0,
-        "NÚMERO_DE_BINES": 60,
-        "TÍTULO_EJE_X": "Masa Invariante (GeV)",
-        "TÍTULO_GRÁFICO": "Detección del Bosón Z (Decaimiento a Muones)"
-    }
+    "output_file": "results/summary_analysis.json"
 }
