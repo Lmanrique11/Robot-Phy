@@ -1,1 +1,6 @@
-
+uproot
+awkward
+hist
+matplotlib
+pandas
+atlasopenmagic
