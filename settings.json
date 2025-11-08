@@ -1,1 +1,18 @@
-
+{
+    "ANÁLISIS": {
+        "PARTÍCULA_OBJETIVO": "Boson_Z_MuMu",
+        "FUENTE_DATOS": "mc_361106_Zee",
+        "AÑO_DATOS": 2017
+    },
+    "CORTES_FÍSICOS": {
+        "PT_MÍNIMO_MUON": 27.0,
+        "ETA_MÁXIMO_MUON": 2.5
+    },
+    "HISTOGRAMA": {
+        "MASA_INVARIANTE_MIN": 60.0,
+        "MASA_INVARIANTE_MAX": 120.0,
+        "NÚMERO_DE_BINES": 60,
+        "TÍTULO_EJE_X": "Masa Invariante (GeV)",
+        "TÍTULO_GRÁFICO": "Detección del Bosón Z (Decaimiento a Muones)"
+    }
+}
