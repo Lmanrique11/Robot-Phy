@@ -3,4 +3,4 @@ awkward
 hist
 numpy
 matplotlib
-wiget
+wget
