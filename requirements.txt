@@ -3,5 +3,5 @@ awkward
 hist
 numpy
 matplotlib
-pandas
-atlasopenmagic
+aiohttp
+requests
