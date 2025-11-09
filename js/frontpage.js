@@ -170,6 +170,10 @@ function showImage(){
         console.log(par2);
     }
 
+    console.log(nowStats[par2]);
+
+    console.log(nowStats[par2]['len']);
+
     const muestra = nowStats[par2]['len'].toString();
     const media = nowStats[par2]['mean'].toString();
     const mediana = nowStats[par2]['mediana'].toString();
