@@ -5,6 +5,7 @@ import uproot
 import awkward as ak
 import matplotlib.pyplot as plt
 import json
+import wget
 
 # === Helper: Load URLs ===
 
@@ -29,8 +30,9 @@ def process_root_file(url, output_dir):
     os.makedirs(plots_dir, exist_ok=True)
     os.makedirs(js_dir, exist_ok=True)
 
-    # --- Load ROOT data ---
-    tree = uproot.open(url)["mini"]
+    # --- Load ROOT data --
+    filename = wget.download(url, out = "./")
+    tree = uproot.open(filename)["mini"]
     branches = [
         "trigP",
         "photon_pt", "photon_eta", "photon_phi", "photon_E",
