@@ -12,6 +12,10 @@ Mira este video para entender rápidamente el flujo de trabajo, cómo se ejecuta
 
 **https://youtu.be/BHWIh_kFpGM**
 
+Puedes ver la interfaz interactiva con los resultados del análisis y probar los diferentes cortes de $p_T$ directamente en la siguiente dirección:
+
+https://lmanrique11.github.io/Robot-Phy/
+
 ##  Introducción
 
 Este proyecto es una herramienta de **Análisis de Física de Partículas** automatizada. Procesa datos abiertos del experimento **ATLAS** del CERN, enfocándose en la búsqueda y estudio de eventos de **dos fotones** ($\gamma\gamma$).
