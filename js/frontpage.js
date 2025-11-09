@@ -149,6 +149,8 @@ const parameter = document.getElementById("parameter");
 let parametro = "";
 let corte = "";
 let fileNameComplete = "";
+let nowStats = {}
+let mensaje = '';
 
 
 function showImage(){
@@ -159,7 +161,35 @@ function showImage(){
 
     fileNameComplete = "./data_D.GamGam/plots/" + filename;
 
-    console.log("./data_D.GamGam/plots/" + filename);
+    if(parametro[-1] == "_"){
+        const par2 = parametro.slice(0, -1);
+    }else{
+        const par2 = parametro;
+    }
+
+    const muestra = nowStats[par2]['len'].toString();
+    const media = nowStats[par2]['mean'].toString();
+    const mediana = nowStats[par2]['mediana'].toString();
+    const desvest = nowStats[par2]['std'].toString();
+    const minV = nowStats[par2]['min'].toString();
+    const maxV = nowStats[par2]['max'].toString();
+    const q1V = nowStats[par2]['q1'].toString();
+    const q3V = nowStats[par2]['q3'].toString();
+
+
+
+
+    statN.innerHTML = muestra;
+    statMean.innerHTML = media;
+    statMedian.innerHTML = mediana;
+    statMin.innerHTML = minV;
+    statMax.innerHTML = maxV;
+    statStd.innerHTML = desvest;
+    statq1.innerHTML = q1V;
+    statq3.innerHTML = q3V;
+
+
+    mensaje = "Saca algún insight de esto (limítate a 50 palabras): Tamaño: "+muestra +  ", Mean:" + media +", std Dev:"+ desvest +", median: "+ mediana +", min: "+minV + ", max: "+maxV+", cuartil 1: " +q1V+ ", cuartil 3:"+q3V;
 
 
 }
@@ -169,6 +199,7 @@ parameter.addEventListener("change",()=>{
 
     parametro = parameter.value;
     corte = String(selectorCorte.value);
+    nowStats = "photon_" + corte + "GeV_stats";
 
     showImage();
 
@@ -181,7 +212,6 @@ parameter.addEventListener("change",()=>{
 //selectorCorte.min = 30;
 //selectorCorte.max = 80;
 
-let imagenActual = "photo_4933878088723008278_x.jpg";
 
 npointsLabel.innerHTML = selectorCorte.value;
 
@@ -191,6 +221,7 @@ selectorCorte.addEventListener("change",()=>{
 
     corte = String(selectorCorte.value);
     npointsLabel.innerHTML = selectorCorte.value;
+    nowStats = "photon_" + corte + "GeV_stats";
 
     showImage();
 
@@ -219,7 +250,6 @@ exportBtn.addEventListener('click', ()=>{
 
 
 
-let mensaje = 'Saca algún insight de esto (limítate a 50 palabras): "Mean: 18.45, std Dev: 2, median:16, min:4, max:28"';
 
 let respuesta = {};
 let r = 0;
