@@ -204,6 +204,8 @@ parameter.addEventListener("change",()=>{
     corte = selectorCorte.value.toString();
     nowStats = window["photon_" + corte + "_stats"];
 
+    console.log(nowStats);
+
     showImage();
 
 
