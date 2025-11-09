@@ -1,11 +1,11 @@
-# 🔬 Robot Physicist: Explorador Interactivo de Parámetros de ATLAS (H $\to \gamma\gamma$)
+#  Robot Physicist: Explorador Interactivo de Parámetros de ATLAS (H $\to \gamma\gamma$)
 
 **Autor:** [Tulio Muños Magaña, Jonatan Garcias y Leonardo Manrique  / Coafina 2025]
 **Licencia:** **Creative Commons CC0 (Datos) & MIT (Código)**
 
 ---
 
-## 🌟 Introducción
+##  Introducción
 
 Este proyecto es una herramienta de **Análisis de Física de Partículas** automatizada. Procesa datos abiertos del experimento **ATLAS** del CERN, enfocándose en la búsqueda y estudio de eventos de **dos fotones** ($\gamma\gamma$).
 
@@ -13,7 +13,7 @@ El proceso de análisis completo se ejecuta de forma reproducible mediante **Git
 
 ---
 
-## 🧐 Marco Teórico: El Bosón de Higgs y $\gamma\gamma$
+##  Marco Teórico: El Bosón de Higgs y $\gamma\gamma$
 
 El análisis se centra en el canal de decaimiento del **Bosón de Higgs** ($H \to \gamma\gamma$). Este canal es clave para la física de partículas.
 
@@ -32,7 +32,7 @@ La herramienta web permite variar el **umbral mínimo de $p_T$** para estudiar c
 
 El núcleo de la automatización reside en el archivo `.github/workflows/analysis.yaml`. Este flujo de trabajo garantiza que el análisis se ejecute y los resultados se actualicen automáticamente con cada cambio en el código.
 
-### **✨ Enfoque en `analysis.yaml` (Flujo de Ejecución de Python)**
+### ** Enfoque en `analysis.yaml` (Flujo de Ejecución de Python)**
 
 El *workflow* `analysis.yaml` se ejecuta en un ambiente Ubuntu y se encarga de todo, **sin depender de un contenedor Docker externo**, asegurando que las librerías de física necesarias estén disponibles.
 
