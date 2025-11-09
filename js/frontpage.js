@@ -201,7 +201,7 @@ function showImage(){
 parameter.addEventListener("change",()=>{
 
     parametro = parameter.value;
-    corte = String(selectorCorte.value);
+    corte = selectorCorte.value.toString();
     nowStats = window["photon_" + corte + "_stats"];
 
     showImage();
