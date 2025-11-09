@@ -1,9 +1,16 @@
 #  Robot Physicist: Explorador Interactivo de Parámetros de ATLAS (H $\to \gamma\gamma$)
 
-**Autor:** [Tulio Muños Magaña, Jonatan Garcias y Leonardo Manrique  / Coafina 2025]
+**Autor: Tulio Muñoz Magaña, Jonatan Garcias y Leonardo Manrique  / Coafina 2025**
+
 **Licencia:** **Creative Commons CC0 (Datos) & MIT (Código)**
 
 ---
+
+## Demostración del Proyecto
+
+Mira este video para entender rápidamente el flujo de trabajo, cómo se ejecuta el análisis en la nube y cómo funciona la interfaz interactiva para explorar los resultados de la física.
+
+**https://youtu.be/BHWIh_kFpGM**
 
 ##  Introducción
 
@@ -12,29 +19,36 @@ Este proyecto es una herramienta de **Análisis de Física de Partículas** auto
 El proceso de análisis completo se ejecuta de forma reproducible mediante **GitHub Actions**, instalando las librerías nativas de Python (`uproot`, `awkward`, `numpy`, etc.) necesarias para manejar los archivos de datos de física (`.root`). Los resultados (gráficos y estadísticas) se publican en una interfaz web simple para su exploración interactiva.
 
 ---
+## Marco Teorico: Análisis de Fotones en ATLAS
 
-##  Marco Teórico: El Bosón de Higgs y $\gamma\gamma$
+El objetivo principal del análisis es estudiar los eventos en los que la colisión de protones produce un sistema de **dos fotones** ($\gamma\gamma$), crucial para la búsqueda del **Bosón de Higgs ($H$)**.
 
-El análisis se centra en el canal de decaimiento del **Bosón de Higgs** ($H \to \gamma\gamma$). Este canal es clave para la física de partículas.
+### El Bosón de Higgs y la Masa Invariante 🔬
 
-El script de análisis (`Scripts/analysis.py`) aplica **criterios de selección (cuts)** rigurosos para aislar los eventos de interés a partir del archivo de datos ROOT (`data_D.GamGam.root`):
+Si un evento $\gamma\gamma$ proviene de un Bosón de Higgs, la **masa invariante ($m_{\gamma\gamma}$)** del sistema debe ser aproximadamente **$125\text{ GeV}$**. El análisis calcula esta variable dinámicamente.
 
-* **Selección de Partículas:** Identificación estricta (`photon_isTightID`) y restricciones de pseudorapidez ($\eta$).
-* **Momento Transverso ($p_T$):** Ambos fotones deben tener un $p_T$ mayor a un umbral mínimo configurable (10-100 GeV).
-* **Aislamiento:** Se verifica que los fotones estén aislados para mitigar el ruido de fondo.
-* **Cálculo de Variables:** Utiliza las librerías de Python para el manejo de vectores (`awkward`, `numpy`) para calcular dinámicamente la **Masa Invariante ($m_{\gamma\gamma}$)**, el **$p_T$ Sumado** y otros observables cruciales.
+### La Necesidad de Cortes (Cuts) ✂️
 
-La herramienta web permite variar el **umbral mínimo de $p_T$** para estudiar cómo afecta la distribución de estas variables.
+Para aislar la señal de eventos raros del inmenso **fondo** de otras colisiones, el script (`Scripts/analysis.py`) aplica rigurosos **cortes de selección**:
+
+| Criterio | Variable Clave | Justificación Física |
+| :--- | :--- | :--- |
+| **Identificación Estricta** | `photon_isTightID` | Asegura que la señal registrada sea un fotón de alta calidad. |
+| **Energía Mínima** | **$p_T > [10-100]\text{ GeV}$** | El **Momento Transverso ($p_T$)** alto reduce drásticamente el fondo de fotones de baja energía. |
+| **Aislamiento** | `ptcone30`, `etcone20` | Los fotones de la señal son **limpios**. Este corte elimina fotones rodeados de otras partículas, minimizando el ruido. |
+
+Al ajustar el **umbral mínimo de $p_T$** en la interfaz, el usuario simula la **optimización de cortes** que realizan los físicos para maximizar la visibilidad de la señal.
+
 
 ---
 
-## ⚙️ Flujo de Trabajo CI/CD: Automatización con GitHub Actions
+##  Flujo de Trabajo CI/CD: Automatización con GitHub Actions
 
 El núcleo de la automatización reside en el archivo `.github/workflows/analysis.yaml`. Este flujo de trabajo garantiza que el análisis se ejecute y los resultados se actualicen automáticamente con cada cambio en el código.
 
-### ** Enfoque en `analysis.yaml` (Flujo de Ejecución de Python)**
+###  Enfoque en `analysis.yaml` (Flujo de Ejecución de Python)
 
-El *workflow* `analysis.yaml` se ejecuta en un ambiente Ubuntu y se encarga de todo, **sin depender de un contenedor Docker externo**, asegurando que las librerías de física necesarias estén disponibles.
+
 
 | Paso | Descripción | Código Clave |
 | :--- | :--- | :--- |
@@ -52,7 +66,7 @@ El *workflow* `analysis.yaml` se ejecuta en un ambiente Ubuntu y se encarga de t
 
 ---
 
-## 💻 Uso Local y Visualización
+##  Uso Local y Visualización
 
 Para ejecutar el análisis manualmente o para visualizar la interfaz web:
 
