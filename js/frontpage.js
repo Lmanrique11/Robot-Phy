@@ -157,7 +157,7 @@ let timeoutId = 0;
 
 function showImage(){
 
-    document.getElementById("geminiR").innerHTML = "";
+    document.getElementById("geminiR").innerHTML = "Pensando ...";
 
 
     clearTimeout(timeoutId); // cancel previous timer
