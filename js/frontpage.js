@@ -149,8 +149,6 @@ for (const value of dataSets) {
 
 
 
-
-
 scripts.forEach(src => {
   const script = document.createElement('script');
   script.src = src;
@@ -235,10 +233,12 @@ dataset.addEventListener("change",()=>{
     parametro = parameter.value;
     corte = selectorCorte.value.toString();
     nowStats =eval(dataNow.replace(/\./g, "") + "photon_" + corte + "_stats");
+    showImage();
 });
 
 parameter.addEventListener("change",()=>{
 
+    dataNow = dataset.value;
     parametro = parameter.value;
     corte = selectorCorte.value.toString();
     nowStats =eval(dataNow.replace(/\./g, "") + "photon_" + corte + "_stats");
@@ -263,6 +263,7 @@ let ind = 0;
 
 selectorCorte.addEventListener("change",()=>{
 
+    dataNow = dataset.value;
     corte = String(selectorCorte.value);
     npointsLabel.innerHTML = selectorCorte.value;
     nowStats =eval(dataNow.replace(/\./g, "") + "photon_" + corte + "_stats");
