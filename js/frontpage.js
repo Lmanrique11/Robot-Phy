@@ -161,10 +161,11 @@ function showImage(){
 
     fileNameComplete = "./data_D.GamGam/plots/" + filename;
 
+    let par2;
     if(parametro[-1] == "_"){
-        const par2 = parametro.slice(0, -1);
+        par2 = parametro.slice(0, -1);
     }else{
-        const par2 = parametro;
+        par2 = parametro;
     }
 
     const muestra = nowStats[par2]['len'].toString();
