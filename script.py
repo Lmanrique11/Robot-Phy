@@ -12,7 +12,7 @@ with open("url.txt","r") as f:
     url = f.read()
 
 
-file = uproot.TFile.Open(url)
+file = uproot.Open(url)
 #file = uproot.open("./data_D.GamGam.root")
 tree = file["mini"]
 
