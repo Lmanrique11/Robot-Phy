@@ -2,7 +2,6 @@
 
 **Autor:** [Tulio Muños Magaña, Jonatan Garcias y Leonardo Manrique  / Coafina 2025]
 **Licencia:** **Creative Commons CC0 (Datos) & MIT (Código)**
-[![GitHub Workflow Status - Analysis](https://github.com/tu-usuario/tu-repo/actions/workflows/analysis.yaml/badge.svg)](https://github.com/tu-usuario/tu-repo/actions/workflows/analysis.yaml)
 
 ---
 
