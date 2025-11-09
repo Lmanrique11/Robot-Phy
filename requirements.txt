@@ -1,6 +1,7 @@
 uproot
 awkward
 hist
+numpy
 matplotlib
 pandas
 atlasopenmagic
