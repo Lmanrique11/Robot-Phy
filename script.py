@@ -8,8 +8,12 @@ import json
 # You can use a local file if you’ve downloaded it
 
 
+with open("url.txt","r") as f:
+    url = f.read()
 
-file = uproot.open("./data_D.GamGam.root")
+
+file = uproot.TFile.Open(url)
+#file = uproot.open("./data_D.GamGam.root")
 tree = file["mini"]
 
 
