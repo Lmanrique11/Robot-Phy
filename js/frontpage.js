@@ -159,10 +159,10 @@ function showImage(){
 
 
     clearTimeout(timeoutId); // cancel previous timer
-        timeoutId = setTimeout(() => {
-            console.log("Triggered after 3s of inactivity!");
-        }, 3000);
-    }
+    timeoutId = setTimeout(() => {
+        console.log("Triggered after 3s of inactivity!");
+    }, 3000);
+    
 
     const filename= parametro + corte + "GeV.png";
 
@@ -181,14 +181,14 @@ function showImage(){
 
 
 
-    const muestra = String(nowStats[par2]['len']);
-    const media =String( nowStats[par2]['mean']);
-    const mediana = String(nowStats[par2]['median']);
-    const desvest = String(nowStats[par2]['std']);
-    const minV =String( nowStats[par2]['min']);
-    const maxV = String(nowStats[par2]['max']);
-    const q1V = String(nowStats[par2]['q1']);
-    const q3V =String( nowStats[par2]['q3']);
+    const muestra = String(nowStats[par2]['len'].toFixed(3));
+    const media =String( nowStats[par2]['mean'].toFixed(3));
+    const mediana = String(nowStats[par2]['median'].toFixed(3));
+    const desvest = String(nowStats[par2]['std'].toFixed(3));
+    const minV =String( nowStats[par2]['min'].toFixed(3));
+    const maxV = String(nowStats[par2]['max'].toFixed(3));
+    const q1V = String(nowStats[par2]['q1'].toFixed(3));
+    const q3V =String( nowStats[par2]['q3'].toFixed(3));
 
 
 
