@@ -23,7 +23,7 @@ def append_url(file_path, url):
         f.write(url + "\n")
 
 # === Physics Analysis for a Single File ===
-def process_root_file(url, output_dir):
+def process_root_file(url, output_dir,n):
     print(f"\n🔹 Processing: {url}")
 
     # Create output directories
@@ -116,7 +116,7 @@ def process_root_file(url, output_dir):
         # Save stats as JS
         js_path = os.path.join(js_dir, f"photon_{GeV_min}GeV_stats.js")
         with open(js_path, "w") as f:
-            f.write(f"const photon_{GeV_min}_stats = {json.dumps(stats, indent=2)};\n")
+            f.write(f"const {n}photon_{GeV_min}_stats = {json.dumps(stats, indent=2)};\n")
 
         # Plot histograms
         for name, arr in variables.items():
@@ -169,7 +169,7 @@ if __name__ == "__main__":
         if filename not in py_array_data:
             py_array_data.append(filename)
 
-        process_root_file(url, output_dir)
+        process_root_file(url, output_dir, filename)
         append_url(aux_file, url)
 
     with open(js_file, "w") as f:

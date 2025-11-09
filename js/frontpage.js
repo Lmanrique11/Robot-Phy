@@ -144,7 +144,6 @@ for (const value of dataSets) {
   for(let k=10; k<=100; k=k+5){
         scripts.push('./'+value+'/JavaScript/photon_' +k.toString() + 'GeV_stats.js');
     }
-
 }
 
 
@@ -233,13 +232,16 @@ function showImage(){
 
 dataset.addEventListener("change",()=>{
     dataNow = dataset.value;
+    parametro = parameter.value;
+    corte = selectorCorte.value.toString();
+    nowStats =eval(dataNow + "photon_" + corte + "_stats");
 });
 
 parameter.addEventListener("change",()=>{
 
     parametro = parameter.value;
     corte = selectorCorte.value.toString();
-    nowStats =eval("photon_" + corte + "_stats");
+    nowStats =eval(dataNow + "photon_" + corte + "_stats");
 
     //console.log(nowStats);
 
@@ -263,7 +265,7 @@ selectorCorte.addEventListener("change",()=>{
 
     corte = String(selectorCorte.value);
     npointsLabel.innerHTML = selectorCorte.value;
-    nowStats =eval("photon_" + corte + "_stats");
+    nowStats =eval(dataNow + "photon_" + corte + "_stats");
 
     showImage();
 
