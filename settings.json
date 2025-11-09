@@ -2,9 +2,9 @@
     "analysis_name": "Explorador de Parámetros Higgs (H -> gamma gamma)",
     "description": "Configuración central para definir el rango de momento transverso (p_T) del fotón a explorar.",
     "analysis_parameters": {
-        "pt_min": 25000,
+        "pt_min": 0,
         "pt_max": 100000,
-        "pt_step": 1500, 
+        "pt_step": 1000, 
         "runs_per_execution": null 
     },
     "units": {
