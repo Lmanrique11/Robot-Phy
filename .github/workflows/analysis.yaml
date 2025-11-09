@@ -30,7 +30,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Run Analysis
       run: |
-        python Scripts/Analysis.py
+        python Scripts/analysis.py
 
     - name: Commit and push changes
       run: |
