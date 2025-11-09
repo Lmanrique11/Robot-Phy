@@ -162,7 +162,7 @@ function showImage(){
     fileNameComplete = "./data_D.GamGam/plots/" + filename;
 
     let par2;
-    if(parametro[-1] == "_"){
+    if(parametro.endsWith("_")){
         par2 = parametro.slice(0, -1);
     }else{
         par2 = parametro;
