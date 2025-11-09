@@ -122,11 +122,23 @@ datasetEl.addEventListener('change', ()=>{
 
 //--------------------------------------------
 
+let scripts = [];
+
+for(let k=10; k<=100; k=k+5){
+    scripts.push('./data_D.GamGam/JavaScript/photon_' +k.toString() + 'GeV_stats.js');
+}
 
 
 
 
+scripts.forEach(src => {
+  const script = document.createElement('script');
+  script.src = src;
+  document.head.appendChild(script);
+});
 
+
+console.log(photon_20_stats);
 
 
 const laImagen = document.getElementById("laImagen");
