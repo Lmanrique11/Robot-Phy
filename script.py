@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 import json
+import pandas as pd
 # --- Open the ATLAS open data ROOT file ---
 # You can use a local file if you’ve downloaded it
 
