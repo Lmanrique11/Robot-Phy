@@ -157,6 +157,8 @@ let timeoutId = 0;
 
 function showImage(){
 
+    document.getElementById("geminiR").innerHTML = "";
+
 
     clearTimeout(timeoutId); // cancel previous timer
     timeoutId = setTimeout(() => {
