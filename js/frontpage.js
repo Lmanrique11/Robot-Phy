@@ -137,8 +137,8 @@ scripts.forEach(src => {
   document.head.appendChild(script);
 });
 
+setTimeout(()=>{console.log(photon_20_stats);}, 6000);
 
-console.log(photon_20_stats);
 
 
 const laImagen = document.getElementById("laImagen");
