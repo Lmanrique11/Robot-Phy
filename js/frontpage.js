@@ -260,7 +260,7 @@ selectorCorte.addEventListener("change",()=>{
 exportBtn.addEventListener('click', ()=>{
     const a=document.createElement('a'); 
     a.href=fileNameComplete; 
-    a.download= imagenActual ; 
+    a.download= parametro + corte + "GeV.png"; 
     document.body.appendChild(a); 
     a.click(); 
     a.remove();
