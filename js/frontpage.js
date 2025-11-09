@@ -200,7 +200,7 @@ parameter.addEventListener("change",()=>{
 
     parametro = parameter.value;
     corte = String(selectorCorte.value);
-    nowStats = "photon_" + corte + "GeV_stats";
+    nowStats = "photon_" + corte + "_stats";
 
     showImage();
 
