@@ -174,6 +174,8 @@ selectorCorte.addEventListener("change",()=>{
     
     npointsLabel.innerHTML = selectorCorte.value;
 
+    showImage();
+
     
     //setTimeout(()=>{
         
