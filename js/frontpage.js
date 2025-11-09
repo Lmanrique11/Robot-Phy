@@ -45,6 +45,8 @@ const statMedian = document.getElementById('stat-median');
 const statStd = document.getElementById('stat-std');
 const statMin = document.getElementById('stat-min');
 const statMax = document.getElementById('stat-max');
+const statq1 = document.getElementById('q1');
+const statq3 = document.getElementById('q3');
 
 
 
@@ -121,22 +123,59 @@ datasetEl.addEventListener('change', ()=>{
 //--------------------------------------------
 
 
+
+
+
 const laImagen = document.getElementById("laImagen");
 const selectorCorte = document.getElementById("selectorCorte");
+const parameter = document.getElementById("parameter");
 
 
-selectorCorte.value = 0;
-selectorCorte.step = 10;
-selectorCorte.min = 30;
-selectorCorte.max = 80;
+let parametro = "";
+let corte = "";
+
+
+function showImage(){
+
+    const filename=parametro + corte + "GeV.png";
+
+    laImagen.src = "data_D.GamGam/plots/" + filename;
+
+
+}
+
+
+parameter.addEventListener("change",()=>{
+
+    parametro = parameter.value;
+    corte = String(selectorCorte.value);
+
+    showImage();
+
+
+});
+
+//selectorCorte.value = 0;
+//selectorCorte.step = 10;
+//selectorCorte.min = 30;
+//selectorCorte.max = 80;
 
 let imagenActual = "photo_4933878088723008278_x.jpg";
 
 npointsLabel.innerHTML = selectorCorte.value;
 
+let ind = 0;
+
 selectorCorte.addEventListener("change",()=>{
     
-    npointsLabel.innerHTML = selectorCorte.value;  
+    npointsLabel.innerHTML = selectorCorte.value;
+
+    
+    setTimeout(()=>{
+        
+        getGeminiResponse()
+
+    },3000);
 
     // Cambiar imagen
     // Cambiar métricas
@@ -155,12 +194,32 @@ exportBtn.addEventListener('click', ()=>{
 })
 
 
+
 let mensaje = 'Saca algún insight de esto (limítate a 50 palabras): "Mean: 18.45, std Dev: 2, median:16, min:4, max:28"';
+
+let respuesta = {};
+let r = 0;
+
+function changeText(){
+    document.getElementById("geminiR").innerHTML = String(respuesta['mensaje']);
+}
 
 function getGeminiResponse(mensaje){
 
-    let respuesta = {};
-    const API_KEY = "";
+
+    const url = "https://hittite-imhotep.xyz/geminiRequest/index.php";
+
+    return fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ mensaje: mensaje })
+    }).then(res => res.json()).then(res => respuesta = res).then(changeText);
+    
+    //.then(res => respuesta = res);
+
+    //console.log(respuesta);
+
+    /*
 
     fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`, {
   method: "POST",
@@ -170,9 +229,14 @@ function getGeminiResponse(mensaje){
   })
 }).then(res => res.json()).then(res => respuesta = res);
 
-return respuesta;
+*/
+
 
 }
+
+//getGeminiResponse(mensaje);
+//setTimeout(()=>{console.log(respuesta);},20000);
+
 
 //let textoRespuesta = respuesta['candidates'][0]['content']['parts'][0]['text'];
 

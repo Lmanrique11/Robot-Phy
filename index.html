@@ -15,7 +15,7 @@
     <div class="logo"><img style=" height:48px;" src="images/cern.png" alt=""></div>
     <div>
       <h1>Robot Physicist</h1>
-      <p class="lead">Explora los datos capturados en el proyecto Atlas!</p>
+      <p class="lead">Explora los datos capturados en el proyecto Atlas !</p>
     </div>
   </header>
 
@@ -24,13 +24,19 @@
     <aside class="card controls">
       <h3>Selección de datos y controles</h3>
 
-      <label for="dataset">Datos</label>
+      <label for="dataset">Dataset</label>
       <select id="dataset">
-        <option value="sine">Sine wave (clean)</option>
-        <option value="sine-noisy">Sine wave (noisy)</option>
-        <option value="scatter">Random scatter</option>
-        <option value="linear">Linear with noise</option>
-        <option value="hist">Distribution (histogram)</option>
+        <option value="sine">Dataset 1</option>
+      </select>
+
+      <label for="parameter">Parámetro</label>
+      <select id="parameter">
+        <option value="_"></option>
+        <option value="pt_sum_GeV_">p_T</option>
+        <option value="delta_eta_">Delta eta</option>
+        <option value="delta_phi_">Delta phi</option>
+        <option value="E_sum_GeV_">Energía</option>
+        <option value="mass_GeV_">Masa</option>
       </select>
 
       <!--<label for="plottype">Plot type</label>
@@ -41,8 +47,8 @@
         <option value="histogram">Histogram</option>
       </select>-->
 
-      <label for="points">Corte: <span id="npoints-label">200</span></label>
-      <input id="selectorCorte" type="range" min="50" max="2000" value="200">
+      <label for="points">Corte: <span id="npoints-label">5</span></label>
+      <input id="selectorCorte" type="range" min="5" max="100" value="5" step="5">
 
       <!-- <label for="smoothing">Smoothing (moving avg window)</label>
       <input id="smoothing" type="range" min="0" max="51" step="1" value="1"> -->
@@ -52,7 +58,10 @@
       <label for="export">Exportar</label>
       <button id="exportBtn">Guardar PNG</button>
 
-      <div class="footer">Del lado derecho puedes ver parámetros descriptivos del análisis y corte que elegiste.</div>
+      <div class="footer">Del lado derecho puedes ver parámetros descriptivos del análisis y corte que elegiste.
+
+        Se grafica del percentil 2 al 98, para dejar fuera los datos extremos.
+      </div>
     </aside>
 
     <!-- Plot -->
@@ -71,15 +80,17 @@
     <!-- Analysis -->
     <aside class="card analysis">
       <h3>Métricas descriptivas</h3>
-      <div class="stat"><div class="label">Points</div><div id="stat-n">—</div></div>
-      <div class="stat"><div class="label">Mean</div><div id="stat-mean">—</div></div>
-      <div class="stat"><div class="label">Median</div><div id="stat-median">—</div></div>
-      <div class="stat"><div class="label">Std. Dev.</div><div id="stat-std">—</div></div>
-      <div class="stat"><div class="label">Min</div><div id="stat-min">—</div></div>
-      <div class="stat"><div class="label">Max</div><div id="stat-max">—</div></div>
+      <div class="stat"><div class="label">Tamaño de la muestra</div><div id="stat-n">—</div></div>
+      <div class="stat"><div class="label">Media</div><div id="stat-mean">—</div></div>
+      <div class="stat"><div class="label">Mediana</div><div id="stat-median">—</div></div>
+      <div class="stat"><div class="label">Desv. Est.</div><div id="stat-std">—</div></div>
+      <div class="stat"><div class="label">Mín</div><div id="stat-min">—</div></div>
+      <div class="stat"><div class="label">Máx</div><div id="stat-max">—</div></div>
+      <div class="stat"><div class="label">Q1</div><div id="q1">—</div></div>
+      <div class="stat"><div class="label">Q3</div><div id="q3">—</div></div>
 
-      <h3 style="margin-top:14px">Análisis</h3>
-      <p class="muted">Aquí va la respuesta de Gemini.</p>
+      <h3 style="margin-top:14px">Análisis de Gemini</h3>
+      <p id="geminiR" class="muted">Aquí va la respuesta de Gemini.</p>
     </aside>
   </main>
 
