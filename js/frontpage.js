@@ -117,16 +117,37 @@ exportBtn.addEventListener('click', ()=>{
 datasetEl.addEventListener('change', ()=>{
     if(datasetEl.value==='hist') plotTypeEl.value='histogram';
     draw();
-})
+});
 
 
 //--------------------------------------------
 
+const laImagen = document.getElementById("laImagen");
+const selectorCorte = document.getElementById("selectorCorte");
+const parameter = document.getElementById("parameter");
+const dataset = document.getElementById("dataset");
+
+
+for (const value of dataSets){
+    let opc = document.createElement("option");
+    opc.innerHTML = value;
+    opc.value = value;
+    dataset.appendChild(opc);
+}
+
+
+
+
 let scripts = [];
 
-for(let k=10; k<=100; k=k+5){
-    scripts.push('./data_D.GamGam/JavaScript/photon_' +k.toString() + 'GeV_stats.js');
+for (const value of dataSets) {
+  for(let k=10; k<=100; k=k+5){
+        scripts.push('./'+value+'/JavaScript/photon_' +k.toString() + 'GeV_stats.js');
+    }
+
 }
+
+
 
 
 
@@ -137,13 +158,11 @@ scripts.forEach(src => {
   document.head.appendChild(script);
 });
 
-setTimeout(()=>{console.log(photon_20_stats);}, 6000);
+//setTimeout(()=>{console.log(photon_20_stats);}, 6000);
 
 
 
-const laImagen = document.getElementById("laImagen");
-const selectorCorte = document.getElementById("selectorCorte");
-const parameter = document.getElementById("parameter");
+
 
 
 let parametro = "";
@@ -151,6 +170,7 @@ let corte = "";
 let fileNameComplete = "";
 let nowStats = {}
 let mensaje = '';
+let dataNow = "";
 
 let timeoutId = 0;
 
@@ -168,9 +188,9 @@ function showImage(){
 
     const filename= parametro + corte + "GeV.png";
 
-    laImagen.src = "./data_D.GamGam/plots/" + filename;
+    laImagen.src = "./"+ dataNow + "/plots/" + filename;
 
-    fileNameComplete = "./data_D.GamGam/plots/" + filename;
+    fileNameComplete = "./" + dataNow + "/plots/" + filename;
 
     let par2;
     if(parametro.endsWith("_")){
@@ -210,6 +230,10 @@ function showImage(){
 
 }
 
+
+dataset.addEventListener("change",()=>{
+    dataNow = dataset.value;
+});
 
 parameter.addEventListener("change",()=>{
 

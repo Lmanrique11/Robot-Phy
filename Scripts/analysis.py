@@ -6,6 +6,8 @@ import awkward as ak
 import matplotlib.pyplot as plt
 import json
 import wget
+import re
+import ast
 
 # === Helper: Load URLs ===
 
@@ -136,6 +138,21 @@ def process_root_file(url, output_dir):
 if __name__ == "__main__":
     urls_file = "./url.txt"
     aux_file = "./url_aux.txt"
+    js_file = "./js/dataSets.js"
+
+    with open(js_file, "r") as f:
+        content = f.read()
+
+    # Extract the array part (everything inside brackets)
+    match = re.search(r"\[.*\]", content, re.DOTALL)
+    if match:
+        array_str = match.group(0)
+        
+        # Convert string to Python list safely
+        py_array_data = ast.literal_eval(array_str)
+    else:
+        print("No array found in JS file.")
+
 
     urls = load_urls(urls_file)
     done_urls = load_urls(aux_file)
@@ -149,7 +166,13 @@ if __name__ == "__main__":
         filename = os.path.basename(url).replace(".root", "")
         output_dir = os.path.join(".", filename)
 
+        if filename not in py_array_data:
+            py_array_data.append(filename)
+
         process_root_file(url, output_dir)
         append_url(aux_file, url)
+
+    with open(js_file, "w") as f:
+        f.write(f"const dataSets = {py_array_data};\n")
 
     print("\n🎉 All files processed successfully.")
