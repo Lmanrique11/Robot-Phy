@@ -54,7 +54,6 @@ def process_root_file(url, output_dir):
         (abs(events.photon_eta) < 1.37) | (abs(events.photon_eta) > 1.52)
     )
     good_mask = mask_tight & mask_pt & mask_eta
-    events = events[good_mask]
     events = events[ak.num(events.photon_pt) == 2]
 
     # Isolation
