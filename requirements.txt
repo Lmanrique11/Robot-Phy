@@ -3,5 +3,4 @@ awkward
 hist
 numpy
 matplotlib
-aiohttp
-requests
+wiget
