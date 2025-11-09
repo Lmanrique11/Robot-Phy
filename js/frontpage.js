@@ -152,8 +152,17 @@ let fileNameComplete = "";
 let nowStats = {}
 let mensaje = '';
 
+let timeoutId = 0;
+
 
 function showImage(){
+
+
+    clearTimeout(timeoutId); // cancel previous timer
+        timeoutId = setTimeout(() => {
+            console.log("Triggered after 3s of inactivity!");
+        }, 3000);
+    }
 
     const filename= parametro + corte + "GeV.png";
 
@@ -170,13 +179,11 @@ function showImage(){
         console.log(par2);
     }
 
-    console.log(nowStats[par2]);
 
-    console.log(nowStats[par2]['len']);
 
     const muestra = String(nowStats[par2]['len']);
     const media =String( nowStats[par2]['mean']);
-    const mediana = String(nowStats[par2]['mediana']);
+    const mediana = String(nowStats[par2]['median']);
     const desvest = String(nowStats[par2]['std']);
     const minV =String( nowStats[par2]['min']);
     const maxV = String(nowStats[par2]['max']);
@@ -208,7 +215,7 @@ parameter.addEventListener("change",()=>{
     corte = selectorCorte.value.toString();
     nowStats =eval("photon_" + corte + "_stats");
 
-    console.log(nowStats);
+    //console.log(nowStats);
 
     showImage();
 
@@ -230,7 +237,7 @@ selectorCorte.addEventListener("change",()=>{
 
     corte = String(selectorCorte.value);
     npointsLabel.innerHTML = selectorCorte.value;
-    nowStats = "photon_" + corte + "GeV_stats";
+    nowStats =eval("photon_" + corte + "_stats");
 
     showImage();
 
