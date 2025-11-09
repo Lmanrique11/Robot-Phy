@@ -126,6 +126,9 @@ datasetEl.addEventListener('change', ()=>{
 
 
 
+
+
+
 const laImagen = document.getElementById("laImagen");
 const selectorCorte = document.getElementById("selectorCorte");
 const parameter = document.getElementById("parameter");
@@ -133,6 +136,7 @@ const parameter = document.getElementById("parameter");
 
 let parametro = "";
 let corte = "";
+let fileNameComplete = "";
 
 
 function showImage(){
@@ -140,6 +144,8 @@ function showImage(){
     const filename= parametro + corte + "GeV.png";
 
     laImagen.src = "./data_D.GamGam/plots/" + filename;
+
+    fileNameComplete = "./data_D.GamGam/plots/" + filename;
 
     console.log("./data_D.GamGam/plots/" + filename);
 
@@ -153,6 +159,7 @@ parameter.addEventListener("change",()=>{
     corte = String(selectorCorte.value);
 
     showImage();
+
 
 
 });
@@ -171,7 +178,6 @@ let ind = 0;
 selectorCorte.addEventListener("change",()=>{
 
     corte = String(selectorCorte.value);
-    
     npointsLabel.innerHTML = selectorCorte.value;
 
     showImage();
@@ -192,7 +198,7 @@ selectorCorte.addEventListener("change",()=>{
 
 exportBtn.addEventListener('click', ()=>{
     const a=document.createElement('a'); 
-    a.href="images/"+ imagenActual; 
+    a.href=fileNameComplete; 
     a.download= imagenActual ; 
     document.body.appendChild(a); 
     a.click(); 
