@@ -137,9 +137,11 @@ let corte = "";
 
 function showImage(){
 
-    const filename=parametro + corte + "GeV.png";
+    const filename= parametro + corte + "GeV.png";
 
-    laImagen.src = "data_D.GamGam/plots/" + filename;
+    laImagen.src = "./data_D.GamGam/plots/" + filename;
+
+    console.log("./data_D.GamGam/plots/" + filename);
 
 
 }
@@ -167,15 +169,17 @@ npointsLabel.innerHTML = selectorCorte.value;
 let ind = 0;
 
 selectorCorte.addEventListener("change",()=>{
+
+    corte = String(selectorCorte.value);
     
     npointsLabel.innerHTML = selectorCorte.value;
 
     
-    setTimeout(()=>{
+    //setTimeout(()=>{
         
-        getGeminiResponse()
+    //    getGeminiResponse()
 
-    },3000);
+    //},3000);
 
     // Cambiar imagen
     // Cambiar métricas
