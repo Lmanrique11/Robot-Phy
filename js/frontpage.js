@@ -202,7 +202,7 @@ parameter.addEventListener("change",()=>{
 
     parametro = parameter.value;
     corte = selectorCorte.value.toString();
-    nowStats = window["photon_" + corte + "_stats"];
+    nowStats =globalThis["photon_" + corte + "_stats"];
 
     console.log(nowStats);
 
