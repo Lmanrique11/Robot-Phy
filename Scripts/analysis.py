@@ -169,7 +169,7 @@ if __name__ == "__main__":
         if filename not in py_array_data:
             py_array_data.append(filename)
 
-        process_root_file(url, output_dir, filename)
+        process_root_file(url, output_dir, filename.replace(".",""))
         append_url(aux_file, url)
 
     with open(js_file, "w") as f:

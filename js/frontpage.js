@@ -234,14 +234,14 @@ dataset.addEventListener("change",()=>{
     dataNow = dataset.value;
     parametro = parameter.value;
     corte = selectorCorte.value.toString();
-    nowStats =eval(dataNow + "photon_" + corte + "_stats");
+    nowStats =eval(dataNow.replace(/\./g, "") + "photon_" + corte + "_stats");
 });
 
 parameter.addEventListener("change",()=>{
 
     parametro = parameter.value;
     corte = selectorCorte.value.toString();
-    nowStats =eval(dataNow + "photon_" + corte + "_stats");
+    nowStats =eval(dataNow.replace(/\./g, "") + "photon_" + corte + "_stats");
 
     //console.log(nowStats);
 
@@ -265,7 +265,7 @@ selectorCorte.addEventListener("change",()=>{
 
     corte = String(selectorCorte.value);
     npointsLabel.innerHTML = selectorCorte.value;
-    nowStats =eval(dataNow + "photon_" + corte + "_stats");
+    nowStats =eval(dataNow.replace(/\./g, "") + "photon_" + corte + "_stats");
 
     showImage();
 
