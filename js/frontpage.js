@@ -164,8 +164,10 @@ function showImage(){
     let par2;
     if(parametro.endsWith("_")){
         par2 = parametro.slice(0, -1);
+        console.log(par2);
     }else{
         par2 = parametro;
+        console.log(par2);
     }
 
     const muestra = nowStats[par2]['len'].toString();
