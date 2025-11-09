@@ -174,14 +174,14 @@ function showImage(){
 
     console.log(nowStats[par2]['len']);
 
-    const muestra = nowStats[par2]['len'].toString();
-    const media = nowStats[par2]['mean'].toString();
-    const mediana = nowStats[par2]['mediana'].toString();
-    const desvest = nowStats[par2]['std'].toString();
-    const minV = nowStats[par2]['min'].toString();
-    const maxV = nowStats[par2]['max'].toString();
-    const q1V = nowStats[par2]['q1'].toString();
-    const q3V = nowStats[par2]['q3'].toString();
+    const muestra = String(nowStats[par2]['len']);
+    const media =String( nowStats[par2]['mean']);
+    const mediana = String(nowStats[par2]['mediana']);
+    const desvest = String(nowStats[par2]['std']);
+    const minV =String( nowStats[par2]['min']);
+    const maxV = String(nowStats[par2]['max']);
+    const q1V = String(nowStats[par2]['q1']);
+    const q3V =String( nowStats[par2]['q3']);
 
 
 
