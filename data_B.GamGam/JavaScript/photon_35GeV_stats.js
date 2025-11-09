@@ -1,4 +1,4 @@
-const photon_35_stats = {
+const data_B.GamGamphoton_35_stats = {
   "pt_sum_GeV": {
     "len": 7265,
     "mean": 37.84772491455078,
