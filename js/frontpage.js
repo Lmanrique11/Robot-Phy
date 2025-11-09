@@ -160,8 +160,8 @@ function showImage(){
 
     clearTimeout(timeoutId); // cancel previous timer
     timeoutId = setTimeout(() => {
-        console.log("Triggered after 3s of inactivity!");
-    }, 3000);
+        getGeminiResponse(mensaje);
+    }, 6000);
     
 
     const filename= parametro + corte + "GeV.png";
